@@ -9,8 +9,9 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-function createElements(amount) {
+function createBoxes(amount) {
   amount = input.value;
+  destroyBoxes();
   let widthHeight = 30;
   if (amount >= 1 && amount <= 100) {
     for (let i = 0; i < amount; i++) {
@@ -22,16 +23,11 @@ function createElements(amount) {
       widthHeight += 10;
     }
   }
+}
+function destroyBoxes() {
+  boxes.innerHTML = '';
   input.value = '';
 }
-function destroyElements() {
-  boxes.innerHTML = '';
-}
 
-function refreshElements() {
-  boxes.innerHTML = '';
-}
-
-input.addEventListener('input', refreshElements);
-buttonCreate.addEventListener('click', createElements);
-buttonDestroy.addEventListener('click', destroyElements);
+buttonCreate.addEventListener('click', createBoxes);
+buttonDestroy.addEventListener('click', destroyBoxes);
